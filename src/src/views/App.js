@@ -11,7 +11,8 @@ class App extends React.Component {
 
   // State Inicial
   state = {
-    books: {}
+    books: {},
+    loading: true
   }
 
   componentDidMount() {
@@ -26,7 +27,7 @@ class App extends React.Component {
       // Group books by shelf
       const books = _.groupBy(result, 'shelf');
       // Update state 
-      this.setState( { books } );
+      this.setState( { books, loading: false } );
     });
   }
 
@@ -87,7 +88,8 @@ class App extends React.Component {
         <Route exact path='/' render={() => (
           <MyShelf 
             books={this.state.books}
-            changeShelfBook={this.changeShelfBook} />
+            changeShelfBook={this.changeShelfBook}
+            loading={this.state.loading} />
         )}/>
 
         {/* Route to component SearchBooks */}

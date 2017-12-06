@@ -179,3 +179,9 @@ html {
 .not-found {
   text-align: center;
 }
+
+/* Loading */
+.loading {
+  width: 1; 
+  margin:0 auto;
+}

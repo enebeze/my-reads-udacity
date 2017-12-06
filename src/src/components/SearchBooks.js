@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactLoading from 'react-loading';
 import BookShelf from './BookShelf';
 import * as BooksAPI from '../services/BooksAPI';
 
@@ -7,29 +8,32 @@ class SearchBooks extends Component {
   // State
   state = {
     books: [],
-    notFound: false
+    notFound: false,
+    loading: false
   }
 
   // Function to fetch the books 
   searchBooks = query => {
+    this.setState({ loading: true, books: [], notFound: false, });
+
     if (query) {
       BooksAPI.search(query).then(books => {
           // Not Found
           if (books.error)
-            this.setState({ books: [], notFound: true });
+            this.setState({ books: [], notFound: true, loading: false });
           else 
-            this.setState({ books, notFound: false });
+            this.setState({ books, notFound: false, loading: false });
         });
     }
     else 
-      this.setState({ books: [], notFound: false });
+      this.setState({ books: [], notFound: false, loading: false });
   }
 
 
 
   render() {
 
-    const { books, notFound } = this.state;
+    const { books, notFound, loading } = this.state;
 
     return (
       <div className="search-books">
@@ -60,7 +64,13 @@ class SearchBooks extends Component {
           )}
 
           {notFound && (
-            <h1 className="not-found">No results found for you query</h1>
+            <h1 className='not-found'>No results found for you query</h1>
+          )}
+
+          {loading && (
+            <div className='loading'>
+              <ReactLoading className='loading' type='bars' color='#2e7c31' delay={1} />
+            </div>
           )}
 
         </div>
