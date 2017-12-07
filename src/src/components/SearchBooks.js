@@ -14,19 +14,20 @@ class SearchBooks extends Component {
 
   // Function to fetch the books 
   searchBooks = query => {
+
     this.setState({ loading: true, books: [], notFound: false, });
 
     if (query) {
       BooksAPI.search(query).then(books => {
           // Not Found
           if (books.error)
-            this.setState({ books: [], notFound: true, loading: false });
+            this.setState({ notFound: true, loading: false });
           else 
-            this.setState({ books, notFound: false, loading: false });
+            this.setState({ books, loading: false });
         });
     }
     else 
-      this.setState({ books: [], notFound: false, loading: false });
+      this.setState({ loading: false });
   }
 
 
