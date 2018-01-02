@@ -30,7 +30,7 @@ class MyShelf extends Component {
                     
                     {this.props.loading && (
                         <div className='loading'>
-                            <ReactLoading className='loading' type='bars' color='#2e7c31' delay={1} />
+                            <ReactLoading className='loading' type='bars' color='#0288d1' delay={1} />
                         </div>
                     )}
     

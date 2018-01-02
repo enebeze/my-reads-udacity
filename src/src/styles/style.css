@@ -14,7 +14,7 @@ html {
 
 .list-books-title {
   padding: 10px 0;
-  background: #2e7c31;
+  background: #0288d1;
   text-align: center;
 }
 .list-books-title h1 {
@@ -38,8 +38,17 @@ html {
   }
 }
 
+.bookshelf-title-header {
+  background-color: #f5f5f5;
+  border-color: #ddd;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom: 0px solid #dedede;
+}
+
 .bookshelf-title {
-  border-bottom: 1px solid #dedede;
+  
+  padding: 10px 15px;
 }
 .bookshelf-books {
   text-align: center;
@@ -55,7 +64,7 @@ html {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #2e7d32;
+  background: #0288d1;
   background-image: url('./icons/add.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -149,7 +158,7 @@ html {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #60ac5d;
+  background: #0288d1;
   background-image: url('./icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -175,6 +184,10 @@ html {
   font-size: 0.8em;
 }
 
+.averageRating {
+  font-size: 0.8em;
+}
+
 /* Not Found */
 .not-found {
   text-align: center;
@@ -185,3 +198,14 @@ html {
   width: 1; 
   margin:0 auto;
 }
+
+
+.react-rater-star.is-active {
+  color: rgb(255, 180, 0); }
+.react-rater-star.is-active-half:before {
+  color: rgb(255, 180, 0);
+  content: '\2605';
+  position: absolute;
+  left: 0;
+  width: 50%;
+  overflow: hidden; }

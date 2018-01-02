@@ -4,6 +4,8 @@ import * as BooksAPI from "../services/BooksAPI";
 // My components
 import MyShelf from "../components/MyShelf";
 import SearchBooks from "../components/SearchBooks";
+import BookDetails from "../components/BookDetails";
+
 // Plugins
 import _ from "lodash";
 
@@ -43,6 +45,8 @@ class App extends React.Component {
     BooksAPI.getAll().then(result => {
       // Group books by shelf
       const books = _.groupBy(result, "shelf");
+
+      console.log(books);
 
       // Update state
       this.setState({ books, loading: false });
@@ -138,7 +142,8 @@ class App extends React.Component {
           author: book.authors,
           imageLinks: JSON.stringify(book.imageLinks),
           shelf: "graphQl",
-          title: book.title
+          title: book.title,
+          averageRating: book.averageRating
         },
         refetchQueries: [
           {query: AllBooksGraphql}
@@ -147,8 +152,6 @@ class App extends React.Component {
       .then(result => {
         this.setState(prevState => {
           const { booksGraphQl } = prevState;
-
-          //if (_.findIndex(booksGraphQl, b => b.id === result.data.createBooks.id) === -1)
           booksGraphQl.push(result.data.createBooks);
           return booksGraphQl;
         });
@@ -190,6 +193,13 @@ class App extends React.Component {
               getCurrentShelfBook={this.getCurrentShelfBook}
               back={() => history.push("/")}
             />
+          )}
+        />
+
+        <Route
+          path="/details"
+          render={({ history }) => (
+            <BookDetails />
           )}
         />
       </div>

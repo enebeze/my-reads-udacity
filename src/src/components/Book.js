@@ -1,4 +1,6 @@
 import React from "react";
+import Rater from 'react-rater'
+import 'react-rater/lib/react-rater.css'
 
 
 const Book = ({ book, changeShelfBook }) => (
@@ -31,12 +33,17 @@ const Book = ({ book, changeShelfBook }) => (
         </select>
       </div>
     </div>
+   
     <div className="book-title">{book.title}</div>
     {book.authors && (
       book.authors.map(author => 
         <div key={author} className="book-authors">{author}</div>
       )
-    )}
+    )} 
+    <div className="averageRating">
+      <Rater interactive={false} rating={book.averageRating} /> 
+      ({book.averageRating || 0})
+    </div>
   </div>
 );
 

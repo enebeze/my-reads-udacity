@@ -4,7 +4,10 @@ import Book from "./Book";
 const BookShelf = ({ title, books = [], changeShelfBook, getCurrentShelfBook }) => (
     
   <div className="bookshelf">
-    <h2 className="bookshelf-title">{title}</h2>
+    <div className="bookshelf-title-header">
+      <h2 className="bookshelf-title">{title} ({books.length})</h2>
+      
+    </div>
     <div className="bookshelf-books">
       {books.length > 0 && (
         <ol className="books-grid">
