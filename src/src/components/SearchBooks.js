@@ -30,8 +30,7 @@ class SearchBooks extends Component {
       this.setState({ loading: false });
   }
 
-
-
+  
   render() {
 
     const { books, notFound, loading } = this.state;

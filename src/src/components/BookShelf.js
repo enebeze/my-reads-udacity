@@ -8,15 +8,21 @@ const BookShelf = ({ title, books = [], changeShelfBook, getCurrentShelfBook }) 
     <div className="bookshelf-books">
       {books.length > 0 && (
         <ol className="books-grid">
-          {books.map(book => (
+          {books.map(book => {
+            book = Object.assign([], book);
+
+            if (getCurrentShelfBook)
+              book = getCurrentShelfBook(book);
+            
+            return (
             <li key={book.id}>
               <Book 
                 key={book.id} 
                 book={book}
-                changeShelfBook={changeShelfBook}
-                getCurrentShelfBook={getCurrentShelfBook} />
+                changeShelfBook={changeShelfBook} />
             </li>
-          ))}
+            )
+          })}
         </ol>
       )}
       {books.length === 0 && (

@@ -6,9 +6,9 @@ const httpLink = new HttpLink({
     uri: 'https://api.graph.cool/simple/v1/cjavpk1j5421h0122ovb0kch3'
 });
 
-const client = new ApolloClient({
+const Client = new ApolloClient({
     link: httpLink,
     cache: new InMemoryCache()
 });
 
-export default client;
+export default Client;
