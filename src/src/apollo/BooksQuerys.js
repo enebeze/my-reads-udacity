@@ -10,6 +10,12 @@ export const AllBooksGraphql = gql`
       authors
       imageLinks
       averageRating
+      publisher
+      publishedDate
+      categories
+      pageCount
+      previewLink
+      description
     }
   }
 `;
@@ -22,6 +28,12 @@ export const AddFromGraphql = gql`
     $shelf: String
     $title: String
     $averageRating: Float
+    $publisher: String
+    $publishedDate: String
+    $categories: [String!]
+    $pageCount: Int
+    $previewLink: String
+    $description: String
   ) {
     createBooks(
       idApi: $idApi
@@ -30,6 +42,12 @@ export const AddFromGraphql = gql`
       shelf: $shelf
       title: $title
       averageRating: $averageRating
+      publisher: $publisher
+      publishedDate: $publishedDate
+      categories: $categories
+      pageCount: $pageCount
+      previewLink: $previewLink
+      description: $description
     ) {
       id: idApi
       idGraphQl: id
@@ -39,6 +57,12 @@ export const AddFromGraphql = gql`
       imageLinks
       authors
       averageRating
+      publisher
+      publishedDate
+      categories
+      pageCount
+      previewLink
+      description
     }
   }
 `;

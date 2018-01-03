@@ -4,7 +4,6 @@ import * as BooksAPI from "../services/BooksAPI";
 // My components
 import MyShelf from "../components/MyShelf";
 import SearchBooks from "../components/SearchBooks";
-import BookDetails from "../components/BookDetails";
 
 // Plugins
 import _ from "lodash";
@@ -16,6 +15,8 @@ import {
   AddFromGraphql,
   RemoveFromGraphql
 } from "../apollo/BooksQuerys";
+
+import { notification } from 'antd';
 
 class App extends React.Component {
   // State Inicial
@@ -45,8 +46,6 @@ class App extends React.Component {
     BooksAPI.getAll().then(result => {
       // Group books by shelf
       const books = _.groupBy(result, "shelf");
-
-      console.log(books);
 
       // Update state
       this.setState({ books, loading: false });
@@ -99,7 +98,12 @@ class App extends React.Component {
     });
 
     // Update Api
-    BooksAPI.update(book, newShelf);
+    BooksAPI.update(book, newShelf).then(() => {
+      notification["success"]({
+        message: 'Success',
+        description: 'Book updated successfully',
+      });
+    });
   };
 
   // Function to check if the book is already in some shelf
@@ -143,7 +147,13 @@ class App extends React.Component {
           imageLinks: JSON.stringify(book.imageLinks),
           shelf: "graphQl",
           title: book.title,
-          averageRating: book.averageRating
+          averageRating: book.averageRating,
+          publisher: book.publisher,
+          publishedDate: book.publishedDate,
+          categories: book.categories,
+          pageCount: book.pageCount,
+          previewLink: book.previewLink,
+          description: book.description
         },
         refetchQueries: [
           {query: AllBooksGraphql}
@@ -193,13 +203,6 @@ class App extends React.Component {
               getCurrentShelfBook={this.getCurrentShelfBook}
               back={() => history.push("/")}
             />
-          )}
-        />
-
-        <Route
-          path="/details"
-          render={({ history }) => (
-            <BookDetails />
           )}
         />
       </div>

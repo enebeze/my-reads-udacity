@@ -8,7 +8,10 @@ import { ApolloProvider } from 'react-apollo';
 import Client from './apollo/Client';
 
 // Style do app
+import "react-rater/lib/react-rater.css";
 import './styles/style.css';
+import 'antd/dist/antd.css';  // or 'antd/dist/antd.less'
+
 
 ReactDOM.render(
     <ApolloProvider client={Client}>

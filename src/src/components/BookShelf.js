@@ -1,5 +1,6 @@
 import React from "react";
 import Book from "./Book";
+import { Alert } from 'antd';
 
 const BookShelf = ({ title, books = [], changeShelfBook, getCurrentShelfBook }) => (
     
@@ -29,7 +30,14 @@ const BookShelf = ({ title, books = [], changeShelfBook, getCurrentShelfBook }) 
         </ol>
       )}
       {books.length === 0 && (
-        <span className="not-found">No books on this bookshelf</span>
+       
+          <Alert
+            description="No books on this bookshelf"
+            type="warning"
+            showIcon
+            className="not-found"
+          />
+     
       )}
     </div>
   </div>
