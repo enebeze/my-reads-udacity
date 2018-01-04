@@ -8,15 +8,10 @@ class Book extends React.Component {
     visible: false
   };
 
-  showModal = () => {
-    this.setState({
-      visible: true
-    });
-  };
-
-  handleCancel = () => {
-    this.setState({ visible: false });
-  };
+  // Show or Hide Modal
+  showHideModal = () => {
+    this.setState({ visible: !this.state.visible});
+  }
 
   render() {
     const { book, changeShelfBook } = this.props;
@@ -27,7 +22,7 @@ class Book extends React.Component {
         
           <div className="book-top">
             {book.imageLinks && (
-              <a onClick={this.showModal}>
+              <a onClick={this.showHideModal}>
                 <div
                   className="book-cover"
                   style={{
@@ -72,7 +67,7 @@ class Book extends React.Component {
         <Modal
           width={930}
           visible={visible}
-          onCancel={this.handleCancel}
+          onCancel={this.showHideModal}
           footer={null}
           closable={false}
         >

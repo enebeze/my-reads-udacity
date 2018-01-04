@@ -7,6 +7,7 @@ import SearchBooks from "../components/SearchBooks";
 
 // Plugins
 import _ from "lodash";
+import { notification } from 'antd';
 
 // GraphQl
 import { graphql, compose } from "react-apollo";
@@ -15,8 +16,6 @@ import {
   AddFromGraphql,
   RemoveFromGraphql
 } from "../apollo/BooksQuerys";
-
-import { notification } from 'antd';
 
 class App extends React.Component {
   // State Inicial
@@ -94,11 +93,12 @@ class App extends React.Component {
       }
 
       // Return the new state of books
-      return books;
+      return prevState;
     });
 
     // Update Api
     BooksAPI.update(book, newShelf).then(() => {
+      // Show notification
       notification["success"]({
         message: 'Success',
         description: 'Book updated successfully',
@@ -128,8 +128,7 @@ class App extends React.Component {
       book.shelf = "graphQl";
       // Property used to delete book
       if (!book.idGraphQl)
-        book.idGraphQl =
-          booksGraphQl[_.findIndex(booksGraphQl, b => b.id === book.id)].idGraphQl;
+        book.idGraphQl = booksGraphQl[_.findIndex(booksGraphQl, b => b.id === book.id)].idGraphQl;
 
       return book;
     }
@@ -138,6 +137,7 @@ class App extends React.Component {
     return book;
   };
 
+  // Function to add from graphql
   addFromGraphQl = book => {
     this.props
       .createBooks({
@@ -168,6 +168,7 @@ class App extends React.Component {
       });
   };
 
+  // Function to remove from graphql
   removeFromGraphQl = book => {
     this.props.deleteBooks({
       variables: { id: book.idGraphQl },

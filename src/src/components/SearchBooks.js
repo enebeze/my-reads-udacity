@@ -5,7 +5,7 @@ import * as BooksAPI from '../services/BooksAPI';
 
 class SearchBooks extends Component {
 
-  // State
+  // Initial State
   state = {
     books: [],
     notFound: false,
