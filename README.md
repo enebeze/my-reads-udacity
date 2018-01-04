@@ -1,2 +1,8 @@
 # my-reads-udacity
-Projeto My Reads do curso da Udacity
+Project My Reads of Udacity course
+
+# Installation
+Install the dependencies with npm install
+yarn start
+
+
