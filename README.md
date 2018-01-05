@@ -3,9 +3,16 @@ Project My Reads of Udacity course
 
 https://my-reads.azurewebsites.net/
 
-# Installation
-Install the dependencies with npm install
+## Install & Running  
 
-$ yarn start
+- Installing dependencies:
+```{r, engine='bash', count_lines}
+$ npm install
+```
+
+- Running server:  
+```{r, engine='bash', count_lines}
+$ npm start
+```
 
 
