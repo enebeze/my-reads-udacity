@@ -1,8 +1,6 @@
 # my-reads-udacity
 Project My Reads of Udacity course
 
-https://my-reads.azurewebsites.net/
-
 ## Install & Running  
 
 - Installing dependencies:
